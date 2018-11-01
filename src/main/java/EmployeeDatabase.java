@@ -56,7 +56,12 @@ public class EmployeeDatabase {
         /*
          * Implement this function
          */
-        return 0;
+        int count = 0;
+        Employee man = employee;
+        while ((man = findManager(man)) != null) {
+            count++;
+        }
+        return count;
     }
 
     /**
@@ -71,6 +76,13 @@ public class EmployeeDatabase {
         /*
          * Implement this function
          */
+        int count = 0;
+        for (Employee und : employees) {
+            if (employee.getName().equals(und.getManager())) {
+                count += countEmployeesUnder(und) + 1;
+            }
+        }
+        return count;
     }
 
     /**
